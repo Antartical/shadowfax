@@ -1,0 +1,33 @@
+language: node_js
+node_js:
+  - "16.12"
+sudo: required
+
+branches:
+  only:
+    - master
+
+before_script:
+  - npm i
+
+script:
+  - npm run test:coverage
+  - npm run build --prod
+
+after_script:
+  - npm run coveralls
+
+before_deploy:
+    - zip -r dist.zip dist
+    - git config --local user.name "$GITHUB_USER"
+    - git config --local user.email "$GITHUB_EMAIL"
+    - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
+    - git tag $TRAVIS_TAG
+
+deploy:
+  provider: releases
+  api_key: $GITHUB_TOKEN
+  file: "dist.zip"
+  skip_cleanup: true
+  on:
+    branch: master

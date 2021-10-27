@@ -1,0 +1,15 @@
+ARG NODE_VERSION=16.12.0
+
+FROM node:${NODE_VERSION}-alpine  as builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+
+FROM nginx:1.13.12-alpine
+RUN apk update && apk add bash && rm -rf /var/cache/apk/*
+COPY ./build/config/.bashrc /root/.bashrc
+COPY --from=builder /app/dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
