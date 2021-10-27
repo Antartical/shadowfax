@@ -1,9 +1,9 @@
 [![Build Status](https://travis-ci.com/Antartical/shadowfax.svg?branch=master)](https://travis-ci.com/Antartical/shadowfax)
-[![Coverage Status](https://coveralls.io/repos/github/Antartical/shadowfax/badge.svg)](https://coveralls.io/github/Antartical/shadowfax)
+[![Coverage Status](https://coveralls.io/repos/github/Antartical/Shadowfax/badge.svg?branch=master)](https://coveralls.io/github/Antartical/Shadowfax?branch=master)
 
 
 <p align="center">
-  <img width="200" height="250" src="https://i.imgur.com/lbeRTwF.png">
+  <img width="230" height="250" src="https://i.imgur.com/PBPZkNS.png">
 </p>
 
 ## Shadowfax in a nutshell
